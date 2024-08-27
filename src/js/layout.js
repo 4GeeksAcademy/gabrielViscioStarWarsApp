@@ -4,10 +4,11 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
-import injectContext from "./store/appContext";
+import injectContext from "./store/appContext";  // Importación correcta de injectContext
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import Characters from "./component/characters";
+import CharactersDescription from "./component/charapterDescription";
 import Planets from "./component/planets";
 import Vehicles from "./component/vehicles";
 
@@ -22,6 +23,7 @@ const Layout = () => {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/characters" element={<Characters />} />
+                        <Route path="/character/:uid" element={<CharactersDescription />} />
                         <Route path="/vehicles" element={<Vehicles />} />
                         <Route path="/planets" element={<Planets />} />
                         <Route path="/demo" element={<Demo />} />
@@ -35,4 +37,4 @@ const Layout = () => {
     );
 };
 
-export default injectContext(Layout);
+export default injectContext(Layout);  // Aquí se aplica el contexto global

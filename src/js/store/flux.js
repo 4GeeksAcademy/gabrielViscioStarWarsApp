@@ -27,17 +27,33 @@ const getState = ({ getStore, getActions, setStore }) => {
                     method: "GET",
                     redirect: "follow"
                 };
-
+            
                 try {
+                    // Primera llamada: obtener la lista de personajes
                     const response = await fetch("https://www.swapi.tech/api/people/", requestOptions);
                     const result = await response.json();
-                    setStore({ characters: result.results });
-                    console.log(result);
-                    return result;
+                    const characters = result.results;
+            
+                    // Crear un array de promesas para obtener los detalles de cada personaje
+                    const detailedCharactersPromises = characters.map(async (character) => {
+                        const detailsResponse = await fetch(character.url, requestOptions);
+                        const detailsResult = await detailsResponse.json();
+                        return {
+                            ...detailsResult.result.properties, // Combina las propiedades detalladas
+                            uid: character.uid, // Mantén el UID original
+                            description: detailsResult.result.description // Añadir descripción si existe
+                        };
+                    });
+            
+                    // Esperar a que todas las promesas se resuelvan y luego almacenar en el estado
+                    const detailedCharacters = await Promise.all(detailedCharactersPromises);
+                    setStore({ characters: detailedCharacters });
+                    console.log(detailedCharacters);
                 } catch (error) {
                     console.error("Error fetching characters:", error);
                 }
             },
+            
 
             getAppiContentPlanets: async () => {
                 const requestOptions = {

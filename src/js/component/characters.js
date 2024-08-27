@@ -14,7 +14,10 @@ const Characters = () => {
                         <li key={index}>
                             <p>{character.name}</p>
                             <p>UID: {character.uid}</p>
-                            <button className="btn btn-secondary m-2">Descripción</button>
+                            {/* Actualizamos el link para que incluya el UID del personaje */}
+                            <Link to={`/character/${character.uid}`}>
+                                <button className="btn btn-secondary m-2">Descripción</button>
+                            </Link>
                         </li>
                     ))}
                 </ul>
