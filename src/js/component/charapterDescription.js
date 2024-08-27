@@ -20,9 +20,7 @@ const CharactersDescription = () => {
             <h3>Descripción de {character?.name}</h3>
             <div className="container-fluid">
                 {character ? (
-                    <div>
-                        <p>Nombre: {character.name}</p>
-                        <p>UID: {character.uid}</p>
+                    <div className="w-200">
                         <p>Altura: {character.height}</p>
                         <p>Peso: {character.mass}</p>
                         <p>Color de cabello: {character.hair_color}</p>

@@ -1,23 +1,25 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import lukeSkywalker from "../../img/lukeSkywalker.jpeg"
 
 const Characters = () => {
     const { store } = useContext(Context);
 
     return (
-        <div className="text-center mt-5">
+        <div className="text-center m-auto">
             <h3>Personajes de Star Wars</h3>
             <div className="container-fluid">
-                <ul>
+                <ul className="d-flex row wrap">
                     {store.characters && store.characters.map((character, index) => (
-                        <li key={index}>
-                            <p>{character.name}</p>
-                            <p>UID: {character.uid}</p>
-                            {/* Actualizamos el link para que incluya el UID del personaje */}
+                        <li className="card"  style={{width: '18rem',}} key={index}>
+                            <img src={lukeSkywalker} alt={character.name} className="card-img-top" />
+                            <div className="card-body">
+                            <h5 class="card-title">{character.name}</h5>
                             <Link to={`/character/${character.uid}`}>
                                 <button className="btn btn-secondary m-2">Descripción</button>
                             </Link>
+                            </div>
                         </li>
                     ))}
                 </ul>
