@@ -11,6 +11,8 @@ import Characters from "./component/characters";
 import CharactersDescription from "./component/charapterDescription";
 import Planets from "./component/planets";
 import Vehicles from "./component/vehicles";
+import FavoritesList from "./component/favoritesList";
+
 
 const Layout = () => {
     const basename = process.env.BASENAME || "";
@@ -29,6 +31,7 @@ const Layout = () => {
                         <Route path="/demo" element={<Demo />} />
                         <Route path="/single/:theid" element={<Single />} />
                         <Route path="*" element={<h1>Not found!</h1>} />
+                        <Route path="/favorites" element={<FavoritesList />} />
                     </Routes>
                     <Footer />
                 </ScrollToTop>

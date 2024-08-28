@@ -1,23 +1,25 @@
 const getState = ({ getStore, getActions, setStore }) => {
     return {
         store: {
-            characters: [], // Almacena personajes
-            planets: [], // Almacena planetas
-            vehicles: [], // Almacena vehículos
-            demo: [
-                {
-                    title: "FIRST",
-                    background: "white",
-                    initial: "white"
-                },
-                {
-                    title: "SECOND",
-                    background: "white",
-                    initial: "white"
-                }
-            ]
+            characters: [],
+            planets: [], 
+            vehicles: [], 
+            favorites: [],  // Aquí se añade la lista de favoritos
         },
         actions: {
+            addFavorite: (character) => {
+                const store = getStore();
+                if (!store.favorites.some(fav => fav.uid === character.uid)) {
+                    setStore({ favorites: [...store.favorites, character] });
+                }
+            },
+
+            removeFavorite: (uid) => {
+                const store = getStore();
+                setStore({
+                    favorites: store.favorites.filter(fav => fav.uid !== uid)
+                });
+            },
             exampleFunction: () => {
                 getActions().changeColor(0, "green");
             },

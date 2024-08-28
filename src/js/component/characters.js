@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import lukeSkywalker from "../../img/lukeSkywalker.jpeg"
+import lukeSkywalker from "../../img/lukeSkywalker.jpeg";
+import FavoritesButton from "./favoritesButton";
 
 const Characters = () => {
     const { store } = useContext(Context);
@@ -15,10 +16,11 @@ const Characters = () => {
                         <li className="card"  style={{width: '18rem',}} key={index}>
                             <img src={lukeSkywalker} alt={character.name} className="card-img-top" />
                             <div className="card-body">
-                            <h5 class="card-title">{character.name}</h5>
-                            <Link to={`/character/${character.uid}`}>
-                                <button className="btn btn-secondary m-2">Descripción</button>
-                            </Link>
+                                <h5 className="card-title">{character.name}</h5>
+                                <Link to={`/character/${character.uid}`}>
+                                    <button className="btn btn-secondary m-2">Descripción</button>
+                                </Link>
+                                <FavoritesButton character={character} />  {/* Aquí se añade el botón */}
                             </div>
                         </li>
                     ))}
