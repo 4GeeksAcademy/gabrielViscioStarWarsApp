@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 
 const CharactersDescription = () => {
     const { store } = useContext(Context);
-    const { uid } = useParams();  // Capturamos el UID de la URL
+    const { uid } = useParams();
     const [character, setCharacter] = useState(null);
 
     useEffect(() => {
-        // Buscar el personaje por UID
+   
         const selectedCharacter = store.characters.find((char) => char.uid === uid);
         setCharacter(selectedCharacter);
     }, [store.characters, uid]);

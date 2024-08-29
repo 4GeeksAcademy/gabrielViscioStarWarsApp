@@ -43,7 +43,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         return {
                             ...detailsResult.result.properties, // Combina las propiedades detalladas
                             uid: character.uid, // Mantén el UID original
-                            description: detailsResult.result.description // Añadir descripción si existe
+                            description: detailsResult.result.description 
                         };
                     });
             

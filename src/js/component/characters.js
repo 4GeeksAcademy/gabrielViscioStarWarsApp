@@ -17,10 +17,13 @@ const Characters = () => {
                             <img src={lukeSkywalker} alt={character.name} className="card-img-top" />
                             <div className="card-body">
                                 <h5 className="card-title">{character.name}</h5>
+                                <p>genero:{character.gender}</p>
+                                <p>Color de cabello: {character.hair_color}</p>
+                                <p>Color de ojos: {character.eye_color}</p>
                                 <Link to={`/character/${character.uid}`}>
                                     <button className="btn btn-secondary m-2">Descripción</button>
                                 </Link>
-                                <FavoritesButton character={character} />  {/* Aquí se añade el botón */}
+                                <FavoritesButton character={character} />
                             </div>
                         </li>
                     ))}

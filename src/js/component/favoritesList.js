@@ -14,8 +14,8 @@ const FavoritesList = () => {
                     {store.favorites.map(favorite => (
                         <li key={favorite.uid}>
                             {favorite.name}
-                            <button onClick={() => actions.removeFavorite(favorite)}>
-                                Remove
+                            <button onClick={() => actions.removeFavorite(favorite.uid)}>
+                                 Remove
                             </button>
                         </li>
                     ))}
