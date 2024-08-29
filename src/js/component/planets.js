@@ -14,10 +14,14 @@ const Planets = () => {
                         <li key={index}>
                             <p>{planet.name}</p>
                             <p>UID: {planet.uid}</p>
-                            <button className="btn btn-secondary m-2">Descripción</button>
+                            <Link to={`/planets/${planet.uid}`}>
+                                <button className="btn btn-secondary m-2">Descripción</button>
+                            </Link>
+                           
                         </li>
                     ))}
                 </ul>
+
                 <Link to="/">
                     <button className="btn btn-primary m-2">Principal</button>
                 </Link>

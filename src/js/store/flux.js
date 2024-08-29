@@ -57,7 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             
 
-            getAppiContentPlanets: async () => {
+          /**  getAppiContentPlanets: async () => {
                 const requestOptions = {
                     method: "GET",
                     redirect: "follow"
@@ -72,7 +72,39 @@ const getState = ({ getStore, getActions, setStore }) => {
                 } catch (error) {
                     console.error("Error fetching planets:", error);
                 }
+            },*/ 
+            getAppiContentPlanets: async () => {
+                const requestOptions = {
+                    method: "GET",
+                    redirect: "follow"
+                };
+            
+                try {
+                    // Primera llamada: obtener la lista de planetas
+                    const response = await fetch("https://www.swapi.tech/api/planets/", requestOptions);
+                    const result = await response.json();
+                    const planets = result.results;
+            
+                    // Crear un array de promesas para obtener los detalles de cada planeta
+                    const detailedPlanetsPromises = planets.map(async (planet) => { // Cambiado 'planets' a 'planet'
+                        const detailsResponse = await fetch(planet.url, requestOptions); // Cambiado 'planets.url' a 'planet.url'
+                        const detailsResult = await detailsResponse.json();
+                        return {
+                            ...detailsResult.result.properties, // Combina las propiedades detalladas
+                            uid: planet.uid, // Mantén el UID original
+                            description: detailsResult.result.description  
+                        };
+                    });
+            
+                    // Esperar a que todas las promesas se resuelvan y luego almacenar en el estado
+                    const detailedPlanets = await Promise.all(detailedPlanetsPromises);
+                    setStore({ planets: detailedPlanets });
+                    console.log(detailedPlanets);
+                } catch (error) {
+                    console.error("Error fetching planets:", error);
+                }
             },
+            
 
             getAppiContentVehicles: async () => {
                 const requestOptions = {
