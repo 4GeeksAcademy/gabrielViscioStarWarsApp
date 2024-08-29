@@ -14,7 +14,9 @@ const Vehicles = () => {
                         <li key={index}>
                             <p>{vehicle.name}</p>
                             <p>UID: {vehicle.uid}</p>
-                            <button className="btn btn-secondary m-2">Descripción</button>
+                            <Link to={`/vehicle/${vehicle.uid}`}>
+                                    <button className="btn btn-secondary m-2">Descripción</button>
+                            </Link>
                         </li>
                     ))}
                 </ul>

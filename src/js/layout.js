@@ -13,6 +13,7 @@ import Planets from "./component/planets";
 import PlanetsDescription from "./component/planetDescription";
 import Vehicles from "./component/vehicles";
 import FavoritesList from "./component/favoritesList";
+import VehiclesDescription from "./component/vehicleDescription";
 
 
 const Layout = () => {
@@ -28,6 +29,7 @@ const Layout = () => {
                         <Route path="/characters" element={<Characters />} />
                         <Route path="/character/:uid" element={<CharactersDescription />} />
                         <Route path="/vehicles" element={<Vehicles />} />
+                        <Route path="/vehicle/:uid" element={<VehiclesDescription />} />
                         <Route path="/planets" element={<Planets />} />
                         <Route path="/planets/:uid" element={<PlanetsDescription />} />
                         <Route path="/demo" element={<Demo />} />
