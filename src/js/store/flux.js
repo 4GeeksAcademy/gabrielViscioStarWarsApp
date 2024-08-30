@@ -129,18 +129,18 @@ const getState = ({ getStore, getActions, setStore }) => {
                 };
             
                 try {
-                    // Primera llamada: obtener la lista de planetas
+                  
                     const response = await fetch("https://www.swapi.tech/api/vehicles/", requestOptions);
                     const result = await response.json();
                     const vehicles = result.results;
             
-                    // Crear un array de promesas para obtener los detalles de cada planeta
-                    const detailedVehiclesPromises = vehicles.map(async (vehicle) => { // Cambiado 'planets' a 'planet'
-                        const detailsResponse = await fetch(vehicle.url, requestOptions); // Cambiado 'planets.url' a 'planet.url'
+                
+                    const detailedVehiclesPromises = vehicles.map(async (vehicle) => { 
+                        const detailsResponse = await fetch(vehicle.url, requestOptions); 
                         const detailsResult = await detailsResponse.json();
                         return {
-                            ...detailsResult.result.properties, // Combina las propiedades detalladas
-                            uid: vehicle.uid, // Mantén el UID original
+                            ...detailsResult.result.properties, 
+                            uid: vehicle.uid, 
                             description: detailsResult.result.description  
                         };
                     });

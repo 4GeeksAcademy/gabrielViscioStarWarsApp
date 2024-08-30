@@ -14,7 +14,7 @@ import PlanetsDescription from "./component/planetDescription";
 import Vehicles from "./component/vehicles";
 import FavoritesList from "./component/favoritesList";
 import VehiclesDescription from "./component/vehicleDescription";
-
+import { Busqueda } from "./views/busqueda";
 
 const Layout = () => {
     const basename = process.env.BASENAME || "";
@@ -26,6 +26,7 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route path="/" element={<Home />} />
+                        <Route path="/busqueda" element={<Busqueda />} />     
                         <Route path="/characters" element={<Characters />} />
                         <Route path="/character/:uid" element={<CharactersDescription />} />
                         <Route path="/vehicles" element={<Vehicles />} />
@@ -44,4 +45,4 @@ const Layout = () => {
     );
 };
 
-export default injectContext(Layout);  // Aquí se aplica el contexto global
+export default injectContext(Layout); 

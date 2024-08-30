@@ -1,0 +1,27 @@
+/* nav.css */
+.navbar-brand {
+    font-family: 'Star Jedi', sans-serif; /* Usa una fuente especial si tienes una */
+    font-size: 2rem;
+    color: #FFD700; /* Color dorado */
+    text-shadow: 2px 2px 5px #000;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-home {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5rem;
+    color: #007BFF; /* Azul de Bootstrap */
+    margin: 0;
+    padding: 0;
+}
+
+.text-decoration-none {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.text-decoration-none:hover {
+    color: #0056b3; /* Azul más oscuro en hover */
+    text-decoration: underline; /* Añade subrayado en hover */
+}
