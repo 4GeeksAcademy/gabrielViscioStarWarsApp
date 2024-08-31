@@ -6,8 +6,8 @@ import Vehicles from "../component/vehicles";
 import Planets from "../component/planets";
 
 export const Home = () => (
-    <div className="text-center mt-5">
-        <h3>Hola, bienvenido a Star Wars</h3>
+    <div className="text-center mt-5" style={{color:'#FFE81F'}}>
+        <h1>Bienvenido a Star Wars</h1>
         <div>
             <Characters />
             <Planets />

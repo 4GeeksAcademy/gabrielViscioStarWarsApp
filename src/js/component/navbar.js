@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/nav.css";  // Importa el archivo CSS
+import galaxia from "../../img/galaxia.jpg";
 
 export const Navbar = () => {
     const { store, actions } = useContext(Context);
 
     return (
-        <nav className="navbar navbar-light bg-light mb-3 justify-content-around">
+        <nav style={{ backgroundImage: `url(${galaxia})` }} className="navbar navbar-light bg-light mb-3 justify-content-around">
             <Link to="/" className="text-decoration-none">
                 <h1 className="navbar-brand">Star Wars</h1>
             </Link>
@@ -15,9 +16,9 @@ export const Navbar = () => {
             <Link to="/" className="text-decoration-none">
                 <h3 className="navbar-home">HOME</h3>
             </Link>
-            <div className="justify-content-end">
+            <div className="d-flex  align-items-center">
                 <div className="dropdown">
-                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button className="btn btn-warning dropdown-toggle "style={{width:'8rem',backgroundColor:'black',color:'#FFE81F'}} type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Favoritos
                     </button>
                     <ul className="dropdown-menu">
@@ -41,7 +42,7 @@ export const Navbar = () => {
                     </ul>
                 </div>
                 <Link to="/busqueda">
-                    <button className="btn btn-primary m-2">Busqueda</button>
+                    <button className="btn btn-warning m-2" style={{width:'8rem',backgroundColor:'black',color:'#FFE81F',}}>Busqueda</button>
                 </Link>
             </div>
         </nav>

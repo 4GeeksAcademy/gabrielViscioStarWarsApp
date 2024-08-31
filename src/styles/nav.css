@@ -1,19 +1,30 @@
 /* nav.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+
 .navbar-brand {
-    font-family: 'Star Jedi', sans-serif; /* Usa una fuente especial si tienes una */
-    font-size: 2rem;
-    color: #FFD700; /* Color dorado */
-    text-shadow: 2px 2px 5px #000;
+    font-family: 'Star Jedi', sans-serif; /* Asegúrate de tener esta fuente disponible */
+    font-size: 2.5rem;
+    color: #FFE81F; /* Color amarillo similar al texto de apertura de Star Wars */
+    text-shadow: 3px 3px 10px hwb(54 12% 0%), 0 0 10px #FFE81F; /* Añade un efecto de brillo */
     margin: 0;
     padding: 0;
+    letter-spacing: 0.1em; /* Espaciado entre letras para un efecto más dramático */
 }
 
 .navbar-home {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial', sans-serif; /* Puedes cambiar esto a algo más temático como 'Roboto' */
     font-size: 1.5rem;
-    color: #007BFF; /* Azul de Bootstrap */
+    color: hwb(54 12% 0%); /* Cambia a un azul más profundo y cósmico */
+    text-shadow: 3px 3px 10px #000, 0 0 10px hwb(54 12% 0%); /* Añade un efecto de brillo */
     margin: 0;
     padding: 0;
+    text-transform: uppercase; /* Todo en mayúsculas para un efecto más fuerte */
+    letter-spacing: 0.05em;
+}
+.btn {
+    
 }
 
 .text-decoration-none {
@@ -22,6 +33,15 @@
 }
 
 .text-decoration-none:hover {
-    color: #0056b3; /* Azul más oscuro en hover */
-    text-decoration: underline; /* Añade subrayado en hover */
+    color: #1B6DF3; /* Mantén el azul profundo para la coherencia */
+    text-shadow: 0 0 5px #1B6DF3, 0 0 10px #1B6DF3; /* Añade un efecto de resplandor al hover */
+    text-decoration: underline;
+}
+
+/* Añadir un fondo galáctico a la barra de navegación */
+.navbar {
+    background-color: #000; /* Fondo negro clásico */
+    background-size: cover;
+    border-bottom: 2px solid #FFE81F; /* Barra inferior en amarillo Star Wars */
+    box-shadow: 0 0 10px #000; /* Sombra para darle profundidad */
 }

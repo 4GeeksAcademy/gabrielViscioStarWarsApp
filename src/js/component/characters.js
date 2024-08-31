@@ -8,12 +8,12 @@ const Characters = () => {
     const { store } = useContext(Context);
 
     return (
-        <div className="text-center m-auto">
+        <div className="text-center m-auto" style={{color:'white'}}>
             <h3>Personajes de Star Wars</h3>
             <div className="overflow-auto">
                 <ul className="d-flex flex-nowrap" style={{ width: 'fit-content', padding: '0 10px' }}>
                     {store.characters && store.characters.map((character, index) => (
-                        <li className="card mx-2" style={{ width: '18rem' }} key={index}>
+                        <li className="card mx-2" style={{ width: '18rem',backgroundColor:'#2c2c2c',color:'white' }} key={index}>
                             <img src={lukeSkywalker} alt={character.name} className="card-img-top" />
                             <div className="card-body">
                                 <h5 className="card-title">{character.name}</h5>
