@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             characters: [],
             planets: [], 
             vehicles: [], 
-            favorites: [],  // Aquí se añade la lista de favoritos
+            favorites: [],  
         },
         actions: {
             addFavorite: (character) => {
@@ -31,23 +31,23 @@ const getState = ({ getStore, getActions, setStore }) => {
                 };
             
                 try {
-                    // Primera llamada: obtener la lista de personajes
+                
                     const response = await fetch("https://www.swapi.tech/api/people/", requestOptions);
                     const result = await response.json();
                     const characters = result.results;
             
-                    // Crear un array de promesas para obtener los detalles de cada personaje
+                
                     const detailedCharactersPromises = characters.map(async (character) => {
                         const detailsResponse = await fetch(character.url, requestOptions);
                         const detailsResult = await detailsResponse.json();
                         return {
-                            ...detailsResult.result.properties, // Combina las propiedades detalladas
-                            uid: character.uid, // Mantén el UID original
+                            ...detailsResult.result.properties, 
+                            uid: character.uid, 
                             description: detailsResult.result.description 
                         };
                     });
             
-                    // Esperar a que todas las promesas se resuelvan y luego almacenar en el estado
+                  
                     const detailedCharacters = await Promise.all(detailedCharactersPromises);
                     setStore({ characters: detailedCharacters });
                     console.log(detailedCharacters);
@@ -57,22 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             
 
-          /**  getAppiContentPlanets: async () => {
-                const requestOptions = {
-                    method: "GET",
-                    redirect: "follow"
-                };
 
-                try {
-                    const response = await fetch("https://www.swapi.tech/api/planets/", requestOptions);
-                    const result = await response.json();
-                    setStore({ planets: result.results });
-                    console.log(result);
-                    return result;
-                } catch (error) {
-                    console.error("Error fetching planets:", error);
-                }
-            },*/ 
             getAppiContentPlanets: async () => {
                 const requestOptions = {
                     method: "GET",
@@ -80,23 +65,22 @@ const getState = ({ getStore, getActions, setStore }) => {
                 };
             
                 try {
-                    // Primera llamada: obtener la lista de planetas
+                    
                     const response = await fetch("https://www.swapi.tech/api/planets/", requestOptions);
                     const result = await response.json();
                     const planets = result.results;
             
-                    // Crear un array de promesas para obtener los detalles de cada planeta
-                    const detailedPlanetsPromises = planets.map(async (planet) => { // Cambiado 'planets' a 'planet'
-                        const detailsResponse = await fetch(planet.url, requestOptions); // Cambiado 'planets.url' a 'planet.url'
+                    const detailedPlanetsPromises = planets.map(async (planet) => { 
+                        const detailsResponse = await fetch(planet.url, requestOptions); 
                         const detailsResult = await detailsResponse.json();
                         return {
-                            ...detailsResult.result.properties, // Combina las propiedades detalladas
-                            uid: planet.uid, // Mantén el UID original
+                            ...detailsResult.result.properties, 
+                            uid: planet.uid, 
                             description: detailsResult.result.description  
                         };
                     });
             
-                    // Esperar a que todas las promesas se resuelvan y luego almacenar en el estado
+              
                     const detailedPlanets = await Promise.all(detailedPlanetsPromises);
                     setStore({ planets: detailedPlanets });
                     console.log(detailedPlanets);
@@ -106,22 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             
 
-          /**   getAppiContentVehicles: async () => {
-                const requestOptions = {
-                    method: "GET",
-                    redirect: "follow"
-                };
-
-                try {
-                    const response = await fetch("https://www.swapi.tech/api/vehicles/", requestOptions);
-                    const result = await response.json();
-                    setStore({ vehicles: result.results });
-                    console.log(result);
-                    return result;
-                } catch (error) {
-                    console.error("Error fetching vehicles:", error);
-                }
-            },*/
+         
             getAppiContentVehicles: async () => {
                 const requestOptions = {
                     method: "GET",
@@ -145,7 +114,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         };
                     });
             
-                    // Esperar a que todas las promesas se resuelvan y luego almacenar en el estado
+                 
                     const detailedVehicles = await Promise.all(detailedVehiclesPromises);
                     setStore({ vehicles: detailedVehicles });
                     console.log(detailedVehicles);
